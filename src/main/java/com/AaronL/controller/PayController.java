@@ -40,7 +40,6 @@ public class PayController {
                               Map<String,Object> map){
         log.info("openid={}",openid);
         //1.查询订单
-//        String orderId="1234563";
         OrderDTO orderDTO=orderService.findOne(orderId);
         if(orderDTO==null){
             throw new SellException(ResultEnum.ORDER_NOT_EXIST);
@@ -59,7 +58,7 @@ public class PayController {
     public ModelAndView create(@RequestParam("orderId") String orderId,
                        @RequestParam("returnUrl") String returnUrl,
                                Map<String,Object> map){
-        //1.查询订单
+        //1.lookup order
         OrderDTO orderDTO=orderService.findOne(orderId);
         if(orderDTO==null){
             throw new SellException(ResultEnum.ORDER_NOT_EXIST);
@@ -74,7 +73,7 @@ public class PayController {
     }
 
     /**
-     * 微信异步通知
+     * WeChat async notification
      * @param notifyData
      */
     @PostMapping("/notify")
@@ -83,8 +82,7 @@ public class PayController {
         log.info("notifyData:{}",notifyData);
         payService.notify(notifyData);
 
-        //返回给微信处理结果
-//        String string="";
+        // return result to WeChat
         return new ModelAndView("pay/success");
     }
 
