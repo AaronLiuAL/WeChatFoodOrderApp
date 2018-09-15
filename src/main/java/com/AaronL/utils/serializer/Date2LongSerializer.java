@@ -1,4 +1,4 @@
-package com.imooc.utils.serializer;
+package com.AaronL.utils.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * Created by SqMax
+ * Created by Aaron on 5/3
+ * data serializer util class
  */
 public class Date2LongSerializer extends JsonSerializer<Date> {
 
